@@ -32,7 +32,7 @@ class PlanarTransform(nn.Module):
         a = torch.mm(z, self.w.T) + self.b
         psi = (1 - nn.Tanh()(a) ** 2) * self.w
         abs_det = (1 + torch.mm(self.u, psi.T)).abs()
-        log_det = torch.log(1e-4 + abs_det)
+        log_det = torch.log(1e-10 + abs_det)
 
         return log_det
 
